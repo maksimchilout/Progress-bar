@@ -1,0 +1,101 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+.wrapper{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background: rgba(222,222,222,1);
+}
+.progresbar{
+	height: 50px;
+	width: 380px;
+	position: relative;
+	transform-style: preserve-3d;
+	
+	transform: rotateX(-20deg) rotateY(-40deg);
+}
+.side{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: rgba(254,254,254,0.3);
+	&__bottom{
+		transform: rotateX(90deg);
+		box-shadow: 10px 5px 50px 5px rgba(0,0,0,0.25);
+		transform-origin: bottom;
+	}
+	&__top{
+		transform: rotateX(-90deg);
+		
+		transform-origin: top;
+	}
+	&__back{
+		transform: translateZ(-50px);
+		
+	}
+	&__left{
+		width: 50px;
+		transform-origin: left;
+		transform: rotateY(90deg);
+		background: rgba(0,139,139,.5);
+	}
+	&__fill{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 50%;
+		height: 100%;
+		background: rgba(0,139,139,.5);
+		transition: .3s all linear;
+	}
+}
+
+.progresbar__controller{
+	display: inline-block;
+	top: -100px;
+	position: relative;
+	left: 50px;
+	margin-right: 18px;
+	font-size: 22px;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	color: white;
+	padding: 5px;
+	background: rgba(0,139,139,.5);
+	border-radius: 5px;
+	box-shadow: 1px -2px 0px 0px rgba(56, 121, 121,1),
+				2px -2px 0px 0px rgba(56, 121, 121,1),
+				3px -2px 0px 0px rgba(56, 121, 121,1),;
+				cursor: pointer;
+}
+
+#zero:checked ~ div > .side__fill{
+	width: 0;
+}
+
+#twenty-five:checked ~ div > .side__fill{
+	width: 25%;
+}
+#fivety:checked ~ div > .side__fill{
+	width: 50%;
+}
+#seventy-five:checked ~ div > .side__fill{
+	width: 75%;
+}
+#hundred:checked ~ div > .side__fill{
+	width: 100%;
+}
+
+.progressbar__checker{
+	display: none;
+}
+
+.progressbar__checker:checked + .progresbar__controller{
+	background:rgba(0,139, 139,1);
+}
